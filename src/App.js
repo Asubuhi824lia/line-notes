@@ -13,6 +13,7 @@ const App = () => {
 				<Route path='/auth' 	element={<AuthPage />} 			/>
 				<Route path='/account'	element={<AccountPage />} 		/>
 				<Route path='/notes' 	element={<NotesPage />} 		/>
+				<Route path='*' 		element={<Navigate to='/auth'/>}/>
 			</Routes>
 		</BrowserRouter>
 	);
