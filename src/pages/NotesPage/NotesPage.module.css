@@ -3,7 +3,7 @@
 }
 
 :root {
-    --input-field__height: 80px;
+    --input-field__height: 115px;
 }
 
 main {
@@ -19,19 +19,34 @@ main {
 }
 
 .input-field {
-    padding: 10px 20px;
+    padding: 15px 20px;
     border: 1px solid #dce1e6;
     background-color: #fafbfc;
     height: var(--input-field__height);
 
     display: flex;
     flex-direction: row;
+    align-items: flex-end;
 }
 
 .input-field textarea {
     resize: none;
+    padding: 10px 15px;
 }
 
 .input-field button {
-
+    background: none;
+    border: none;
 }
+.input-field img {
+    animation: 0.15s linear 0s im-zoom-appear;
+    opacity: .5;
+}
+.input-field img:hover {
+    opacity: 1;
+}
+.input-field img:active {
+    opacity: .4;
+}
+
+
