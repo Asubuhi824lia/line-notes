@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --input-field__height: 80px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.notes-area {
+    color: aqua;
+    overflow-y: scroll;
+    height: calc(100vh - var(--input-field__height));
+}
+
+.input-field {
+    padding: 10px 20px;
+    border: 1px solid #dce1e6;
+    background-color: #fafbfc;
+    height: var(--input-field__height);
+
+    display: flex;
+    flex-direction: row;
+}
+
+.input-field textarea {
+    resize: none;
+}
+
+.input-field button {
+
+}
