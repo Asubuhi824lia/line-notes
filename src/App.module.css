@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+}
+
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  background-color: #edeef0;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 550px;
+}

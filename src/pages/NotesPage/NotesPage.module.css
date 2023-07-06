@@ -4,19 +4,23 @@
 
 :root {
     --input-field__height: 115px;
+    --header_height: 40px;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+.NotesSection {
+    margin: 15px 0;
 }
 
 .notes-area {
-    color: aqua;
+    color: black;
+    border: 1px solid #dce1e6;
     overflow-y: scroll;
-    height: calc(100vh - var(--input-field__height));
+    height: calc(100vh - var(--input-field__height) - var(--header_height));
+    padding: 0 36px;
+    background-color: white;
 }
+
+.notes-area div>div p { margin-left: 20px; }
 
 .input-field {
     padding: 15px 20px;
@@ -26,18 +30,19 @@ main {
 
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
+    /* align-items: flex-end; */
 }
 
 .input-field textarea {
     resize: none;
     padding: 10px 15px;
+    width: -webkit-fill-available;
 }
 
 .input-field button {
-    background: none;
-    border: none;
+    margin-left: 10px;
 }
+
 .input-field img {
     animation: 0.15s linear 0s im-zoom-appear;
     opacity: .5;
