@@ -1,7 +1,7 @@
 import Header from '../../common/Header/Header'
 
 import styles from './NotesPage.module.css'
-import send_icon from '../../send-icon.png'
+import send_icon from '../../icons/send-icon.png'
 
 
 const NotesPage = () => {

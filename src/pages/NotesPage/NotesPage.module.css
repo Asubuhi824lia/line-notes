@@ -4,18 +4,18 @@
 
 :root {
     --input-field__height: 115px;
-    --header_height: 40px;
+    --notes-section__margin-y: 15px;
 }
 
 .NotesSection {
-    margin: 15px 0;
+    margin: var(--notes-section__margin-y) 0;
 }
 
 .notes-area {
     color: black;
     border: 1px solid #dce1e6;
     overflow-y: scroll;
-    height: calc(100vh - var(--input-field__height) - var(--header_height));
+    height: calc(100vh - var(--input-field__height) - var(--header__height) - 2*var(--notes-section__margin-y));
     padding: 0 36px;
     background-color: white;
 }
