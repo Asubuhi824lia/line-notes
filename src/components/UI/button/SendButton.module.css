@@ -1,0 +1,16 @@
+button {
+    margin-left: 10px;
+}
+
+img {
+    animation: 0.15s linear 0s im-zoom-appear;
+    opacity: .5;
+}
+
+img:hover {
+    opacity: 1;
+}
+
+img:active {
+    opacity: .4;
+}

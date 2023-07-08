@@ -1,9 +1,7 @@
-import Header from '../../common/Header/Header'
+import styles from './NotesPage.module.css'
 
 import NoteTextarea from '../../UI/textarea/NoteTextarea'
-
-import styles from './NotesPage.module.css'
-import send_icon from '../../../icons/send-icon.png'
+import SendButton	from '../../UI/button/SendButton'
 
 
 const NotesPage = () => {
@@ -85,9 +83,7 @@ const NotesPage = () => {
 			</section>
 			<form className={styles['input-field']}>
 				<NoteTextarea />
-				<button className="send-btn">
-					<img src={send_icon} height={24} width={24} />
-				</button>
+				<SendButton />
 			</form>
 		</div>
 	);

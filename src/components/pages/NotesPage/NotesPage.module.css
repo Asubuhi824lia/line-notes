@@ -31,21 +31,3 @@
     display: flex;
     flex-direction: row;
 }
-
-
-.input-field button {
-    margin-left: 10px;
-}
-
-.input-field img {
-    animation: 0.15s linear 0s im-zoom-appear;
-    opacity: .5;
-}
-.input-field img:hover {
-    opacity: 1;
-}
-.input-field img:active {
-    opacity: .4;
-}
-
-
