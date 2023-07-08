@@ -11,19 +11,19 @@ header {
     justify-content: flex-end;
 }
 
-header>button {
+.header-item {
     background: transparent;
     border: none;
-    height: fit-content;
+    height: calc(32px + 2*15px);
     padding: 0;
 }
-header>button>img {
+.header-item>img {
     height: 32px;
     margin: 15px;
 }
-header>button:hover {
+.header-item:hover {
     background: #f5f6f8;
 }
-header>button:active {
+.header-item:active {
     background: #E5E6EA;
 }

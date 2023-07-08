@@ -2,11 +2,11 @@ import React from 'react'
 import styles from './App.module.css';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 
-import Header from './common/Header/Header'
+import Header from './components/common/Header/Header'
 
-import AuthPage from './pages/AuthPage/AuthPage'
-import AccountPage from './pages/AccountPage/AccountPage'
-import NotesPage from './pages/NotesPage/NotesPage'
+import AuthPage 	from './components/pages/AuthPage/AuthPage'
+import AccountPage 	from './components/pages/AccountPage/AccountPage'
+import NotesPage 	from './components/pages/NotesPage/NotesPage'
 
 const App = () => {
 	return (

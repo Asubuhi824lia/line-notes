@@ -1,0 +1,18 @@
+section {
+    padding: 0 10px;
+}
+
+.data-fields {
+    display: flex;
+    flex-direction: column;
+}
+
+.data-fields>label {
+    padding: 10px 0;
+}
+
+section>button {
+    width: fit-content;
+    padding: 0px 30px;
+    margin-top: 20px;
+}
