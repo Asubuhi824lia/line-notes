@@ -1,5 +1,7 @@
 import Header from '../../common/Header/Header'
 
+import NoteTextarea from '../../UI/textarea/NoteTextarea'
+
 import styles from './NotesPage.module.css'
 import send_icon from '../../../icons/send-icon.png'
 
@@ -82,8 +84,7 @@ const NotesPage = () => {
 				</div>
 			</section>
 			<form className={styles['input-field']}>
-				<textarea name='note' maxLength={80} rows={4}
-					wrap='hard' placeholder='Ваша заметка...' autoFocus />
+				<NoteTextarea />
 				<button className="send-btn">
 					<img src={send_icon} height={24} width={24} />
 				</button>

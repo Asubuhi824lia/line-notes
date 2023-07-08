@@ -30,14 +30,8 @@
 
     display: flex;
     flex-direction: row;
-    /* align-items: flex-end; */
 }
 
-.input-field textarea {
-    resize: none;
-    padding: 10px 15px;
-    width: -webkit-fill-available;
-}
 
 .input-field button {
     margin-left: 10px;
