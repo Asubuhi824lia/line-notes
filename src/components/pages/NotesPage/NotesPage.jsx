@@ -29,10 +29,14 @@ const NotesPage = () => {
 		setNotes([...notes, newNote])
 	}
 
+	const removeNote = (note) => {
+		setNotes(notes.filter(n => n.id != note.id))
+	}
+
 
 	return (
 		<div className={styles['NotesSection']}>
-			<NoteList notes={notes} />
+			<NoteList notes={notes} remove={removeNote} />
 			<NoteForm notes={notes} create={createNote} />
 		</div>
 	);
