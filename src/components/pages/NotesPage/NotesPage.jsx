@@ -25,11 +25,15 @@ const NotesPage = () => {
 		{ id: 15, date: '08.07.2023', text: 'One more note!' },
 	])
 
+	const createNote = (newNote) => {
+		setNotes([...notes, newNote])
+	}
+
 
 	return (
 		<div className={styles['NotesSection']}>
 			<NoteList notes={notes} />
-			<NoteForm notes={notes} />
+			<NoteForm notes={notes} create={createNote} />
 		</div>
 	);
 }

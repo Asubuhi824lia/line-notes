@@ -6,7 +6,7 @@ import NoteTextarea from '../textarea/NoteTextarea'
 import SendButton from '../button/SendButton'
 
 
-const NoteForm = ({notes}) => {
+const NoteForm = ({notes, create}) => {
     const [note, setNote] = useState({ id: 0, date: '', text: '' })
 
     const addNewNote = (e) => {
@@ -18,7 +18,7 @@ const NoteForm = ({notes}) => {
             date: cur_date.getDate() + '.' + cur_date.getMonth() + '.' + cur_date.getFullYear()
         }
 
-        console.log(newNote)
+        create(newNote)
     }
 
 
