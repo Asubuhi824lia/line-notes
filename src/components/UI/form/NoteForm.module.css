@@ -1,0 +1,9 @@
+.input-field {
+    padding: 15px 20px;
+    border: 1px solid #dce1e6;
+    background-color: #fafbfc;
+    height: var(--input-field__height);
+
+    display: flex;
+    flex-direction: row;
+}

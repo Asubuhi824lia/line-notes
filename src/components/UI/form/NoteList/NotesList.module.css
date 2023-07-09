@@ -1,0 +1,10 @@
+.notes-area {
+    color: black;
+    border: 1px solid #dce1e6;
+    overflow-y: scroll;
+    height: calc(100vh - var(--input-field__height) - var(--header__height) - 2*var(--notes-section__margin-y));
+    padding: 0 36px;
+    background-color: white;
+}
+
+.notes-area div>div p { margin-left: 20px; }
