@@ -3,9 +3,9 @@ import styles from './SendButton.module.css'
 import send_icon from '../../../icons/send-icon.png'
 
 
-const SendButton = () => {
+const SendButton = (props) => {
     return (
-        <button>
+        <button onClick={props.onClick}>
             <img src={send_icon} height={24} width={24} />
         </button>
     );
