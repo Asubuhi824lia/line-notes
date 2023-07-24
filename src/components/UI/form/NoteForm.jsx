@@ -13,9 +13,15 @@ const NoteForm = ({notes, create}) => {
         e.preventDefault()
         const cur_date = new Date()
 
+        let date = cur_date.getDate()
+        date = date < 10 ? '0'+String(date) : date
+
+        let month = cur_date.getMonth() + 1
+        month = month < 10 ? '0'+String(month) : month
+
         const newNote = {
             ...note, id: Date.now(),
-            date: cur_date.getDate() + '.' + cur_date.getMonth() + '.' + cur_date.getFullYear()
+            date: date + '.' + month + '.' + cur_date.getFullYear()
         }
 
         create(newNote)
