@@ -15,10 +15,10 @@ const App = () => {
 				<BrowserRouter>
 					<Header />
 					<Routes>
-						<Route path='/auth' element={<AuthPage />} />
-						<Route path='/account' element={<AccountPage />} />
-						<Route path='/notes' element={<NotesPage />} />
-						<Route path='*' element={<Navigate to='/notes' />} />
+						<Route path='/auth' 	element={<AuthPage />} />
+						<Route path='/account' 	element={<AccountPage />} />
+						<Route path='/notes' 	element={<NotesPage />} />
+						<Route path='*'			element={<Navigate to='/notes' />} />
 					</Routes>
 				</BrowserRouter>
 			</main>
