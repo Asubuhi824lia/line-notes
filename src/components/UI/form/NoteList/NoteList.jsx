@@ -4,12 +4,12 @@ import NoteItem from './NoteItem/NoteItem'
 import { useEffect } from 'react'
 
 
-const NoteList = ({notes, remove}) => {
+const NoteList = ({notes, remove, isInc}) => {
 
     useEffect(() => {
         const section = document.querySelector('#note_list')
         section.scrollTo(0, section.scrollHeight)
-    }, [])
+    }, [isInc])
 
     
 

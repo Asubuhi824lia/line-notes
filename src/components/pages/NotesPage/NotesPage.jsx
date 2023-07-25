@@ -24,9 +24,11 @@ const NotesPage = () => {
 		{ id: 14, date: '08.07.2023', text: 'One more note!' },
 		{ id: 15, date: '08.07.2023', text: 'One more note!' },
 	])
+	const [isInc, setIsInc] = useState(false)
 
 	const createNote = (newNote) => {
 		setNotes([...notes, newNote])
+		setIsInc(!isInc)
 	}
 
 	const removeNote = (note) => {
@@ -36,7 +38,7 @@ const NotesPage = () => {
 
 	return (
 		<div className={styles['NotesSection']}>
-			<NoteList notes={notes} remove={removeNote} />
+			<NoteList notes={notes} remove={removeNote} isInc={isInc} />
 			<NoteForm notes={notes} create={createNote} />
 		</div>
 	);
