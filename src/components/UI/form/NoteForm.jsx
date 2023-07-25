@@ -25,13 +25,14 @@ const NoteForm = ({notes, create}) => {
         }
 
         create(newNote)
+        setNote({ id: 0, date: '', text: '' })
     }
 
 
     return (
         <form className={styles['input-field']}>
             <NoteTextarea
-                value={notes}
+                text={note.text}
                 onChange={e => { setNote({ ...note, text: e.target.value }) }} />
             <SendButton onClick={addNewNote} />
         </form>
