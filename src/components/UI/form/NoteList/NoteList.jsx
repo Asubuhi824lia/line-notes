@@ -14,8 +14,12 @@ const NoteList = ({notes, remove, isInc}) => {
     
 
     return (
-        <section className={styles['notes-area']} id='note_list'>
-            {notes.map((note, index) => <NoteItem note={note} key={index.toString()} remove={remove} />)}
+        <section id='note_list' className={ `${styles['notes-area']} 
+            ${notes.length != 0 ? styles['notes-area-fill'] : styles['notes-area-empty']}` }>
+            { notes.length != 0
+                ? notes.map((note, index) => <NoteItem note={note} key={index.toString()} remove={remove} />)
+                : <span style={{color: "gray"}}>"Пока что заметок здесь нет!"</span>
+            }
         </section>
     );
 }
