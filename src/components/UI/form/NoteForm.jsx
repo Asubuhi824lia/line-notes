@@ -34,7 +34,7 @@ const NoteForm = ({notes, create}) => {
             <NoteTextarea
                 text={note.text}
                 onChange={e => { setNote({ ...note, text: e.target.value }) }} />
-            <SendButton onClick={addNewNote} />
+            <SendButton onClick={addNewNote} isTextareaEmpty={note.text == '' || !note.text.match(/[^\s]/g)} />
         </form>
     );
 }
