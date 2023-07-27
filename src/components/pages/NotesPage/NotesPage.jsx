@@ -2,8 +2,9 @@ import styles from './NotesPage.module.css'
 
 import { useState } from 'react'
 
-import NoteList from '../../UI/form/NoteList/NoteList'
+import NoteList from '../../UI/notes/NoteList'
 import NoteForm from '../../UI/form/NoteForm'
+import SearchBar from '../../UI/notes/SearchBar/SearchBar'
 
 
 const NotesPage = () => {
@@ -38,6 +39,7 @@ const NotesPage = () => {
 
 	return (
 		<div className={styles['NotesSection']}>
+			<SearchBar/>
 			<NoteList notes={notes} remove={removeNote} isInc={isInc} />
 			<NoteForm notes={notes} create={createNote} />
 		</div>

@@ -1,0 +1,58 @@
+:root {
+    --search-field-height: 60px;
+}
+
+.search-field {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    padding: 16px 8px;
+    padding-left: 24px;
+    background-color: white;
+    border: 1px solid #dce1e6;
+    height: var(--search-field-height);
+    border-bottom: none;
+}
+
+
+.search-input {
+    width: -webkit-fill-available;
+    border: none;
+    margin-right: 8px;
+    outline: none;
+}
+
+.icon {
+    padding: 12px;
+    background-color: transparent;
+}
+
+.search-btn, .cancel-btn {
+    padding: 0 16px;
+    border-radius: 10px;
+    border: none;
+    height: 28px;
+}
+
+.search-btn {
+    background-color: #447bba;
+    color: white;
+}
+
+.cancel-btn {
+    background-color: #e5ebf1;
+    color: #346297;
+}
+
+.choose-date-btn {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+
+.choose-date-btn, .search-btn, .cancel-btn {
+    margin-right: 8px;
+    cursor: pointer;
+}
