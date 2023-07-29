@@ -28,7 +28,7 @@
     background-color: transparent;
 }
 
-.search-btn, .cancel-btn {
+.search-btn, .reset-btn {
     padding: 0 16px;
     border-radius: 10px;
     border: none;
@@ -40,10 +40,16 @@
     background-color: #447bba;
     color: white;
 }
+.search-btn:hover {
+    background-color: rgb(68, 123, 186, .9);
+}
 
-.cancel-btn {
+.reset-btn {
     background-color: #e5ebf1;
     color: #346297;
+}
+.reset-btn:hover {
+    background-color: rgb(219, 226, 235);
 }
 
 .choose-date-btn {
@@ -56,7 +62,7 @@
     flex-direction: row;
 }
 
-.choose-date-btn, .search-btn, .cancel-btn {
+.choose-date-btn, .search-btn, .reset-btn {
     margin-right: 8px;
 }
 

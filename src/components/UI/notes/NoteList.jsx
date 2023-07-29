@@ -11,6 +11,7 @@ const NoteList = ({notes, remove, isInc}) => {
         section.scrollTo(0, section.scrollHeight)
     }, [isInc])
 
+
     return (
         <section id='note_list' className={ `${styles['notes-area']} 
             ${notes.length !== 0 ? styles['notes-area-fill'] : styles['notes-area-empty']}` }>
