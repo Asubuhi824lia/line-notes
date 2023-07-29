@@ -10,7 +10,7 @@ import { useMemo, useState } from 'react'
 
 
 const SearchBar = ({notes, change, isChangeList}) => {
-    const [date, setDate] = useState(new Date())
+    const [date, setDate] = useState()
     const [searchText, setSearchText] = useState('')
 
     const [selectedSearch, setSelectedSearch] = useState('')
@@ -43,7 +43,7 @@ const SearchBar = ({notes, change, isChangeList}) => {
     change(filteredNotes)
 
     const reset = () => {
-        setDate(new Date());
+        setDate('');
         setSearchText('')
         setSelectedSearch('')
     }

@@ -8,7 +8,7 @@ const NoteList = ({notes, remove, isInc}) => {
 
     useEffect(() => {
         const section = document.querySelector('#note_list')
-        section.scrollTo(0, section.scrollHeight)
+        setTimeout(section.scrollTo(0, section.scrollHeight), 500)
     }, [isInc])
 
 
