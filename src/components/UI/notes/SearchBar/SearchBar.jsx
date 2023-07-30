@@ -13,11 +13,10 @@ import useFilter from '../../../../hooks/useFilter'
 const SearchBar = ({notes, change}) => {
     const [date, setDate] = useState()
     const [searchText, setSearchText] = useState('')
-
     const [selectedSearch, setSelectedSearch] = useState('')
     const [isInputChanged, setIsInputChanged] = useState(false)
 
-    
+
     const filteredNotes = useFilter( notes, selectedSearch, 
         date, searchText, isInputChanged )
     change(filteredNotes)

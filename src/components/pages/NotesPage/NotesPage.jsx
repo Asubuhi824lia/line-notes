@@ -6,40 +6,23 @@ import NoteList from '../../UI/notes/NoteList'
 import NoteForm from '../../UI/form/NoteForm'
 import SearchBar from '../../UI/notes/SearchBar/SearchBar'
 
-import axios from 'axios'
+import NoteService from '../../../API/NoteService'
 
 
 const NotesPage = () => {
 	const [notes, setNotes] = useState([])
 	const [isChangeList, setIsChangeList] = useState(false)
 	const [filteredNoteList, setFilteredNoteList] = useState(notes)
-
-
-	async function fetchNotes() {
-		const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
-			.then(response => response.data.map(post => {
-					const cur_date = new Date()
-		
-					let day = post.userId + 10
-					day = day < 10 ? '0'+String(day) : day
-		
-					let month = cur_date.getMonth() + 1
-					month = month < 10 ? '0'+String(month) : month
-		
-					return {
-						id: post.id,
-						date: day + '.' + month + '.' + cur_date.getFullYear(),
-						text: post.title
-					}	
-				})
-			)
-		setNotes(response)
-	}
-
+	
 	useEffect(() => {
 		fetchNotes()
 	}, [])
 
+
+	async function fetchNotes() {
+		const response = await NoteService.getAll()
+		setNotes(response)
+	}
 
 	const changeNoteList = (sortedNotes) => {
 		sortedNotes ? setFilteredNoteList(sortedNotes) : setFilteredNoteList(notes)
