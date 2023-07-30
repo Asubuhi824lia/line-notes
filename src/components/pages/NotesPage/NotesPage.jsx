@@ -15,7 +15,7 @@ const NotesPage = () => {
 	const [filteredNoteList, setFilteredNoteList] = useState(notes)
 
 
-	async function fetchPosts() {
+	async function fetchNotes() {
 		const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
 			.then(response => response.data.map(post => {
 					const cur_date = new Date()
@@ -37,7 +37,7 @@ const NotesPage = () => {
 	}
 
 	useEffect(() => {
-		fetchPosts()
+		fetchNotes()
 	}, [])
 
 

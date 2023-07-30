@@ -6,10 +6,11 @@ import calendar_icon from '../../../../icons/calendar-icon.png'
 import ReactDatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.module.css'
 
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
+import useFilter from '../../../../hooks/useFilter'
 
 
-const SearchBar = ({notes, change, isChangeList}) => {
+const SearchBar = ({notes, change}) => {
     const [date, setDate] = useState()
     const [searchText, setSearchText] = useState('')
 
@@ -17,30 +18,10 @@ const SearchBar = ({notes, change, isChangeList}) => {
     const [isInputChanged, setIsInputChanged] = useState(false)
 
     
-    const filterByInput = () => {
-        // setDate(new Date())
-        return notes.filter(note => note.text.toLowerCase().includes(searchText))
-    }
-    const filterByDate = () => {
-        setSearchText('')
-
-        let day = date.getDate()
-        day = day < 10 ? '0'+String(day) : day
-
-        let month = date.getMonth() + 1
-        month = month < 10 ? '0'+String(month) : month
-
-        const formed_date = day + '.' + month + '.' + date.getFullYear()
-
-        return notes.filter(note => note.date === formed_date)
-    }
-
-    const filteredNotes = useMemo(() => {
-        if(selectedSearch === 'date')    return filterByDate();
-        if(selectedSearch === 'input')   return filterByInput();
-        return notes;
-    }, [selectedSearch, isInputChanged, date, isChangeList])
+    const filteredNotes = useFilter( notes, selectedSearch, 
+        date, searchText, isInputChanged )
     change(filteredNotes)
+
 
     const reset = () => {
         setDate('');
@@ -62,15 +43,17 @@ const SearchBar = ({notes, change, isChangeList}) => {
             <button className={styles['choose-date-btn']}>
                 <ReactDatePicker
                     className={styles['date-picker']}
-                    onChange={d => {setDate(d); setSelectedSearch('date')}}
+                    onChange={d => {setDate(d); setSelectedSearch('date'); setSearchText('')}}
                     selected={date}
                 />
                 <img alt='calendar-icon' src={calendar_icon} className={styles.icon} width={size} height={size}/>
             </button>
             <button 
                 className={styles['search-btn']} 
-                onClick={() => {setSelectedSearch('input'); setIsInputChanged(!isInputChanged)}}>Поиск</button>
-            <button className={styles['reset-btn']}  onClick={reset}>Сброс</button>
+                onClick={() => {setSelectedSearch('input'); setIsInputChanged(!isInputChanged); setDate('')}}>Поиск</button>
+            <button 
+                className={styles['reset-btn']}  
+                onClick={reset}>Сброс</button>
         </div>
     )
 }
