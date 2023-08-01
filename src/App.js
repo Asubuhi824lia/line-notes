@@ -1,6 +1,7 @@
+import styles from './App.module.css'
+
 import React from 'react'
-import styles from './App.module.css';
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 
 import Header from './components/common/Header/Header'
 

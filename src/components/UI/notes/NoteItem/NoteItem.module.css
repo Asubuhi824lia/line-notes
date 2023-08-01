@@ -7,3 +7,17 @@
 }
 
 p { margin-left: 20px; }
+
+.note-options {
+    display: flex;
+}
+
+.note-item_btn {
+    background: transparent;
+    border: none;
+    padding: 0 10px;
+}
+.note-item_btn>img {
+    width: 20px;
+    opacity: .8;
+}

@@ -11,18 +11,19 @@ import NoteService from '../../../API/NoteService'
 
 const NotesPage = () => {
 	const [notes, setNotes] = useState([])
-	const [isChangeList, setIsChangeList] = useState(false)
-	const [filteredNoteList, setFilteredNoteList] = useState(notes)
+	const [isChangeList, setIsChangeList] 			= useState(false)
+	const [filteredNoteList, setFilteredNoteList] 	= useState(notes)
 	
+	
+	async function fetchNotes() {
+		const response = await NoteService.getAll()		
+		setNotes(response.data)
+	}
+		
 	useEffect(() => {
 		fetchNotes()
 	}, [])
-
-
-	async function fetchNotes() {
-		const response = await NoteService.getAll()
-		setNotes(response)
-	}
+	
 
 	const changeNoteList = (sortedNotes) => {
 		sortedNotes ? setFilteredNoteList(sortedNotes) : setFilteredNoteList(notes)
@@ -33,9 +34,8 @@ const NotesPage = () => {
 		setNotes([...notes, newNote])
 		setIsChangeList(!isChangeList)
 	}
-
 	const removeNote = (note) => {
-		setNotes(notes.filter(n => n.id != note.id))
+		setNotes(notes.filter(n => n.id !== note.id))
 		setIsChangeList(!isChangeList)
 	}
 
