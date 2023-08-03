@@ -11,9 +11,10 @@ import NoteService from '../../../API/NoteService'
 
 const NotesPage = () => {
 	const [notes, setNotes] = useState([])
-	const [isChangeList, setIsChangeList] 			= useState(false)
-	const [filteredNoteList, setFilteredNoteList] 	= useState(notes)
 	
+	const [isChangeList, setIsChangeList] 			= useState(false)
+	const [filteredNoteList, setFilteredNoteList] 	= useState(notes)	
+
 	
 	async function fetchNotes() {
 		const response = await NoteService.getAll()		
@@ -39,12 +40,16 @@ const NotesPage = () => {
 		setIsChangeList(!isChangeList)
 	}
 
+	const [editNote, setEditNote] = useState({ id: 0, date: '', text: '' })
+
+	useEffect(() => {console.log(editNote)}, [editNote])
 
 	return (
 		<div className={styles['NotesSection']}>
 			<SearchBar 	notes={notes} change={changeNoteList} isChangeList={isChangeList} />
-			<NoteList 	notes={filteredNoteList} remove={removeNote} isInc={isChangeList} />
-			<NoteForm 	notes={notes} create={createNote} />
+			<NoteList 	notes={filteredNoteList} remove={removeNote} isInc={isChangeList} 
+				setEditNote={setEditNote} />
+			<NoteForm 	create={createNote} editNote={editNote}/>
 		</div>
 	);
 }
