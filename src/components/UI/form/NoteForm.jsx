@@ -1,13 +1,18 @@
 import styles from './NoteForm.module.css'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import NoteTextarea from '../textarea/NoteTextarea'
 import SendButton from '../button/SendButton'
 
 
-const NoteForm = ({notes, create}) => {
+const NoteForm = ({create, editNote}) => {
     const [note, setNote] = useState({ id: 0, date: '', text: '' })
+    
+    useEffect(() => {
+        setNote(editNote)
+    }, [editNote])
+
 
     const addNewNote = (e) => {
         e.preventDefault()
@@ -34,9 +39,12 @@ const NoteForm = ({notes, create}) => {
             <NoteTextarea
                 text={note.text}
                 onChange={e => { setNote({ ...note, text: e.target.value }) }} />
-            <SendButton onClick={addNewNote} isTextareaEmpty={note.text == '' || !note.text.match(/[^\s]/g)} />
+            <SendButton 
+                onClick={(e) => { addNewNote(e) }} 
+                isTextareaEmpty={note.text == '' || !note.text.match(/[^\s]/g)} />
         </form>
     );
 }
+
 
 export default NoteForm;
