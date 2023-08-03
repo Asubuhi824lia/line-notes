@@ -5,7 +5,9 @@ import edit from '../../../../icons/edit-icon.png'
 import del from '../../../../icons/delete-icon.png'
 
 
-const NoteItem = ({note, remove, setEditNote}) => {
+const NoteItem = ({note, remove, setEditNote, editState}) => {
+
+    const [isEditing, setIsEditing] = editState
 
     return (
             <div className={styles.note}>
@@ -17,9 +19,13 @@ const NoteItem = ({note, remove, setEditNote}) => {
                     <button className={styles['note-item_btn']} onClick={() => remove(note)}>
                         <img alt="delete" src={del}/>
                     </button>
-                    <button className={styles['note-item_btn']} onClick={() => setEditNote(note)}>
-                        <img alt="edit" src={edit}/>
-                    </button>
+                    {!isEditing
+                    ?   <button className={styles['note-item_btn']} onClick={() => {setIsEditing(true); setEditNote(note)}}>
+                            <img alt="edit" src={edit}/>
+                        </button>
+                    :   <button className={styles['note-item_btn']} onClick={() => {setIsEditing(true); setEditNote(note)}}>
+                            <img className={styles.hide} alt="edit" src={edit}/>
+                        </button>}
                 </div>
             </div>
     );

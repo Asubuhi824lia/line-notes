@@ -22,3 +22,7 @@ p { margin-left: 20px; }
     width: 20px;
     opacity: .8;
 }
+
+.hide {
+    display: none;
+}
