@@ -35,21 +35,27 @@ const NotesPage = () => {
 		setNotes([...notes, newNote])
 		setIsChangeList(!isChangeList)
 	}
+
 	const removeNote = (note) => {
 		setNotes(notes.filter(n => n.id !== note.id))
 		setIsChangeList(!isChangeList)
 	}
 
-	const [editNote, setEditNote] = useState({ id: 0, date: '', text: '' })
 
-	useEffect(() => {console.log(editNote)}, [editNote])
+	const [editNote, setEditNote] 	= useState(null)
+	const [isEditing, setIsEditing] = useState(false)
+
+	useEffect(() => {
+		if(!editNote) setIsEditing(false);
+	}, [editNote])
+
 
 	return (
 		<div className={styles['NotesSection']}>
 			<SearchBar 	notes={notes} change={changeNoteList} isChangeList={isChangeList} />
 			<NoteList 	notes={filteredNoteList} remove={removeNote} isInc={isChangeList} 
-				setEditNote={setEditNote} />
-			<NoteForm 	create={createNote} editNote={editNote}/>
+				setEditNote={setEditNote} editState={[isEditing, setIsEditing]} />
+			<NoteForm 	create={createNote} editNote={editNote} setEditNote={setEditNote} />
 		</div>
 	);
 }

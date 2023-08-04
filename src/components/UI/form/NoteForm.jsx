@@ -6,8 +6,9 @@ import NoteTextarea from '../textarea/NoteTextarea'
 import SendButton from '../button/SendButton'
 
 
-const NoteForm = ({create, editNote}) => {
-    const [note, setNote] = useState({ id: 0, date: '', text: '' })
+const NoteForm = ({create, editNote, setEditNote}) => {
+    
+    const [note, setNote] = useState(null)
     
     useEffect(() => {
         setNote(editNote)
@@ -33,15 +34,19 @@ const NoteForm = ({create, editNote}) => {
         setNote({ id: 0, date: '', text: '' })
     }
 
+    const isEmpty = (text) => {
+        return (text == '') ? true : (text.match(/[^\s]/g) ? false : true);
+    }
+
 
     return (
         <form className={styles['input-field']}>
             <NoteTextarea
-                text={note.text}
+                text={note ? note.text: ''}
                 onChange={e => { setNote({ ...note, text: e.target.value }) }} />
             <SendButton 
-                onClick={(e) => { addNewNote(e) }} 
-                isTextareaEmpty={note.text == '' || !note.text.match(/[^\s]/g)} />
+                onClick={(e) => { addNewNote(e); setEditNote(null) }}
+                isTextareaEmpty={ note ? isEmpty(note.text) : true } />
         </form>
     );
 }
