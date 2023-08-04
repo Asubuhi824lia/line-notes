@@ -6,7 +6,7 @@ import NoteTextarea from '../textarea/NoteTextarea'
 import SendButton from '../button/SendButton'
 
 
-const NoteForm = ({create, editNote, setEditNote}) => {
+const NoteForm = ({create, editNote, setEditNote, change, isEditing}) => {
     
     const [note, setNote] = useState(null)
     
@@ -38,6 +38,20 @@ const NoteForm = ({create, editNote, setEditNote}) => {
         return (text == '') ? true : (text.match(/[^\s]/g) ? false : true);
     }
 
+    const isEdited = (editedText, origText) => {
+        return (editedText === origText) ? false : true;
+    }
+
+
+    const editIfChanged = (e) => {
+		e.preventDefault()
+        if (isEdited(editNote.text, note.text)) {
+            change(editNote, note.text)
+            return true;
+        }
+        else    
+            return false;
+    }
 
     return (
         <form className={styles['input-field']}>
@@ -45,7 +59,7 @@ const NoteForm = ({create, editNote, setEditNote}) => {
                 text={note ? note.text: ''}
                 onChange={e => { setNote({ ...note, text: e.target.value }) }} />
             <SendButton 
-                onClick={(e) => { addNewNote(e); setEditNote(null) }}
+                onClick={(e) => {  isEditing ? editIfChanged(e) : addNewNote(e); setEditNote(null) }}
                 isTextareaEmpty={ note ? isEmpty(note.text) : true } />
         </form>
     );

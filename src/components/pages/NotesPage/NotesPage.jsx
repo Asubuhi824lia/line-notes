@@ -49,13 +49,25 @@ const NotesPage = () => {
 		if(!editNote) setIsEditing(false);
 	}, [editNote])
 
+	const changeNote = (editNote, newText) => {
+		// if (editNote.text == newText) {
+		// 	return false;
+		// } else {
+		// 	notes[editNote.id].text = newText
+		// 	return true;
+		// }
+		console.log(editNote)
+		console.log(newText)
+	}
+
 
 	return (
 		<div className={styles['NotesSection']}>
 			<SearchBar 	notes={notes} change={changeNoteList} isChangeList={isChangeList} />
 			<NoteList 	notes={filteredNoteList} remove={removeNote} isInc={isChangeList} 
 				setEditNote={setEditNote} editState={[isEditing, setIsEditing]} />
-			<NoteForm 	create={createNote} editNote={editNote} setEditNote={setEditNote} />
+			<NoteForm 	create={createNote} editNote={editNote} setEditNote={setEditNote}
+				change={changeNote} isEditing={isEditing} />
 		</div>
 	);
 }
