@@ -5,18 +5,18 @@
 }
 
 .disabled {
-    opacity: .3 !important;
+    opacity: .4 !important;
 }
 
 img {
     animation: 0.15s linear 0s im-zoom-appear;
-    opacity: .4;
+    opacity: .6;
 }
 
 img:hover {
-    opacity: .5;
+    opacity: .7;
 }
 
 img:active {
-    opacity: .6;
+    opacity: .8;
 }
