@@ -50,14 +50,12 @@ const NotesPage = () => {
 	}, [editNote])
 
 	const changeNote = (editNote, newText) => {
-		// if (editNote.text == newText) {
-		// 	return false;
-		// } else {
-		// 	notes[editNote.id].text = newText
-		// 	return true;
-		// }
-		console.log(editNote)
-		console.log(newText)
+		if (editNote.text == newText) {
+			return false;
+		} else {
+			notes[editNote.id-1].text = newText
+			return true;
+		}
 	}
 
 
