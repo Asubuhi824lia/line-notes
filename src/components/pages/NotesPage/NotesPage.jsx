@@ -46,6 +46,14 @@ const NotesPage = () => {
 	const [isEditing, setIsEditing] = useState(false)
 
 	useEffect(() => {
+		if(!isEditing) {
+			changeInputHeight('115px');
+		} else {
+			changeInputHeight('150px')
+		}
+	}, [isEditing])
+	
+	useEffect(() => {
 		if(!editNote) setIsEditing(false);
 	}, [editNote])
 
@@ -56,6 +64,10 @@ const NotesPage = () => {
 			notes[editNote.id-1].text = newText
 			return true;
 		}
+	}
+
+	const changeInputHeight = (height = '115px') => {
+		document.documentElement.style.setProperty('--note-form__height', height)
 	}
 
 

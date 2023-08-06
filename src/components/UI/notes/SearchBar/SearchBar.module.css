@@ -1,5 +1,5 @@
 :root {
-    --search-field-height: 60px;
+    --search-field__height: 60px;
 }
 
 .search-field {
@@ -11,7 +11,7 @@
     padding-left: 24px;
     background-color: white;
     border: 1px solid #dce1e6;
-    height: var(--search-field-height);
+    height: var(--search-field__height);
     border-bottom: none;
 }
 

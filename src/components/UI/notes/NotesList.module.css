@@ -1,5 +1,5 @@
 .notes-area {
-    height: calc(100vh - var(--input-field__height) - var(--header__height) - 2*var(--notes-section__margin-y) - var(--search-field-height));
+    height: calc(100vh - var(--header__height) - var(--search-field__height) - var(--note-form__height) - 2*var(--notes-section__margin-y));
     border: 1px solid #dce1e6;
     padding: 0 36px;
     background-color: white;

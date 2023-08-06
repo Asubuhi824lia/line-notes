@@ -1,5 +1,10 @@
+:root {
+    --editing-head__height: 35px;
+    --note-form__height: var(--editing-head__height) + var(--input-field__height)
+}
+
 .editing-head {
-    height: 35px;
+    height: var(--editing-head__height);
     padding: 15px 20px 0;
     padding-right: 70px;
 

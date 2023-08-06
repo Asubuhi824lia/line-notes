@@ -56,8 +56,8 @@ const NoteForm = ({create, editNote, setEditNote, change, isEditing}) => {
 
 
     return (
-        <div>
-            <EditHeader />
+        <div className={styles['note-form']}>
+            <EditHeader isEditing={isEditing} />
             <form className={styles['input-field']}>
                 <NoteTextarea
                     text={note ? note.text: ''}
