@@ -55,15 +55,21 @@ const NoteForm = ({create, editNote, setEditNote, change, isEditing}) => {
 
 
     return (
-        <form className={styles['input-field']}>
-            <NoteTextarea
-                text={note ? note.text: ''}
-                onChange={e => { setNote({ ...note, text: e.target.value }) }}/>
-            <SendButton 
-                type={isEditing} /* true - edit; false - send */
-                onClick={(e) => { isEditing ? editIfChanged(e) : addNewNote(e); setEditNote(null) }}
-                isTextareaEmpty={ note ? isEmpty(note.text) : true } />
-        </form>
+        <div>
+            <div className={styles['editing-head']}>
+                <span>Редактирование <a href='#' className={styles['note-link']}>заметки</a></span>
+                <span>&#10005;</span>
+            </div>
+            <form className={styles['input-field']}>
+                <NoteTextarea
+                    text={note ? note.text: ''}
+                    onChange={e => { setNote({ ...note, text: e.target.value }) }}/>
+                <SendButton 
+                    type={isEditing} /* true - edit; false - send */
+                    onClick={(e) => { isEditing ? editIfChanged(e) : addNewNote(e); setEditNote(null) }}
+                    isTextareaEmpty={ note ? isEmpty(note.text) : true } />
+            </form>
+        </div>
     );
 }
 

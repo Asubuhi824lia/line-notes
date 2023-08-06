@@ -1,4 +1,4 @@
-textarea {
+.note-textarea {
     resize: none;
     padding: 10px 15px;
     width: -webkit-fill-available;
