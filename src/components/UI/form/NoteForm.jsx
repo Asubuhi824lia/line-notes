@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 
 import NoteTextarea from '../textarea/NoteTextarea'
 import SendButton from '../button/SendButton'
+import EditHeader from './EditHeader/EditHeader'
 
 
 const NoteForm = ({create, editNote, setEditNote, change, isEditing}) => {
@@ -56,10 +57,7 @@ const NoteForm = ({create, editNote, setEditNote, change, isEditing}) => {
 
     return (
         <div>
-            <div className={styles['editing-head']}>
-                <span>Редактирование <a href='#' className={styles['note-link']}>заметки</a></span>
-                <span>&#10005;</span>
-            </div>
+            <EditHeader />
             <form className={styles['input-field']}>
                 <NoteTextarea
                     text={note ? note.text: ''}

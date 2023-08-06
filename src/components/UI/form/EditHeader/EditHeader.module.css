@@ -1,0 +1,23 @@
+.editing-head {
+    height: 35px;
+    padding: 15px 20px 0;
+    padding-right: 70px;
+
+    border: 1px solid #dce1e6;
+    border-bottom: none;
+    background-color: #fafbfc;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.note-link {
+    text-decoration: none;
+}
+
+.note-link:hover {
+    text-decoration: underline;
+}
