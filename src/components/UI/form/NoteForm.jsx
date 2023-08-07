@@ -53,11 +53,24 @@ const NoteForm = ({create, editNote, setEditNote, change, isEditing}) => {
         else    
             return false;
     }
+        
+
+	useEffect(() => {
+		if(!isEditing) {
+			changeFormHeight('115px');
+		} else {
+			changeFormHeight('150px')
+		}
+	}, [isEditing])
+
+	const changeFormHeight = (height = '115px') => {
+		document.documentElement.style.setProperty('--note-form__height', height)
+	}
 
 
     return (
         <div className={styles['note-form']}>
-            <EditHeader isEditing={isEditing} />
+            <EditHeader isEditing={isEditing} setEditNote={setEditNote}/>
             <form className={styles['input-field']}>
                 <NoteTextarea
                     text={note ? note.text: ''}

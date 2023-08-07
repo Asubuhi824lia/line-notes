@@ -1,5 +1,4 @@
 import styles from './NoteItem.module.css'
- 
 
 import edit from '../../../../icons/edit-icon.png'
 import del from '../../../../icons/delete-icon.png'
