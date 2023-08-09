@@ -1,7 +1,13 @@
 import styles from './EditHeader.module.css'
+import { useContext } from 'react';
+
+import { EditNoteContext, IsEditingContext } from '../../../../context';
 
 
-const EditHeader = ({note, isEditing, setEditNote}) => {
+const EditHeader = () => {
+
+    const isEditing     = useContext(IsEditingContext)['isEditing']
+    const setEditNote   = useContext(EditNoteContext)['setEditNote']
     
     return (
         <div className={styles['editing-head']} style={isEditing ? {display: 'flex'} : {display: 'none'}}>

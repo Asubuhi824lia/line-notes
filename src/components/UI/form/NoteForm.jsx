@@ -70,13 +70,12 @@ const NoteForm = ({create, editNote, setEditNote, change, isEditing}) => {
 
     return (
         <div className={styles['note-form']}>
-            <EditHeader isEditing={isEditing} setEditNote={setEditNote}/>
+            <EditHeader/>
             <form className={styles['input-field']}>
                 <NoteTextarea
                     text={note ? note.text: ''}
                     onChange={e => { setNote({ ...note, text: e.target.value }) }}/>
                 <SendButton 
-                    type={isEditing} /* true - edit; false - send */
                     onClick={(e) => { isEditing ? editIfChanged(e) : addNewNote(e); setEditNote(null) }}
                     isTextareaEmpty={ note ? isEmpty(note.text) : true } />
             </form>

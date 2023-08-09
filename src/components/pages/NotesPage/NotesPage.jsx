@@ -7,6 +7,7 @@ import NoteForm from '../../UI/form/NoteForm'
 import SearchBar from '../../UI/notes/SearchBar/SearchBar'
 
 import NoteService from '../../../API/NoteService'
+import { EditNoteContext, IsEditingContext } from '../../../context'
 
 
 const NotesPage = () => {
@@ -42,8 +43,8 @@ const NotesPage = () => {
 	}
 
 
-	const [editNote, setEditNote] 	= useState(null)
 	const [isEditing, setIsEditing] = useState(false)
+	const [editNote, setEditNote] 	= useState(null)
 	
 	useEffect(() => {
 		if(!editNote) setIsEditing(false);
@@ -60,13 +61,23 @@ const NotesPage = () => {
 
 
 	return (
-		<div className={styles['NotesSection']}>
-			<SearchBar 	notes={notes} change={changeNoteList} isChangeList={isChangeList} />
-			<NoteList 	notes={filteredNoteList} remove={removeNote} isInc={isChangeList} 
-				setEditNote={setEditNote} editState={[isEditing, setIsEditing]} />
-			<NoteForm 	create={createNote} editNote={editNote} setEditNote={setEditNote}
-				change={changeNote} isEditing={isEditing} />
-		</div>
+		<IsEditingContext.Provider value={{
+			isEditing, 
+			setIsEditing,
+		}}>
+			<EditNoteContext.Provider value={{
+				editNote,
+				setEditNote
+			}}>
+				<div className={styles['NotesSection']}>
+					<SearchBar 	notes={notes} change={changeNoteList} isChangeList={isChangeList} />
+					<NoteList 	notes={filteredNoteList} remove={removeNote} isInc={isChangeList} 
+						setEditNote={setEditNote} editState={[isEditing, setIsEditing]} />
+					<NoteForm 	create={createNote} editNote={editNote} setEditNote={setEditNote}
+						change={changeNote} isEditing={isEditing} />
+				</div>
+			</EditNoteContext.Provider>
+		</IsEditingContext.Provider>
 	);
 }
 

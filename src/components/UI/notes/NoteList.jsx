@@ -4,7 +4,7 @@ import NoteItem from './NoteItem/NoteItem'
 import { useEffect } from 'react'
 
 
-const NoteList = ({notes, remove, isInc, setEditNote, editState}) => {
+const NoteList = ({notes, remove, isInc, emittedKey}) => {
 
     useEffect(() => {
         const section = document.querySelector('#note_list')
@@ -16,12 +16,12 @@ const NoteList = ({notes, remove, isInc, setEditNote, editState}) => {
             ${notes.length !== 0 ? styles['notes-area-fill'] : styles['notes-area-empty']}` }>
             { notes.length !== 0
                 ? notes.map((note, index) => 
-                    <NoteItem note={note} key={index.toString()} remove={remove} 
-                        setEditNote={setEditNote} editState={editState} />)
+                    <NoteItem note={note} key={index.toString()} remove={remove}/>)
                 : <span style={{color: "gray"}}>Пока что заметок здесь нет!</span>
             }
         </section>
     );
 }
+
 
 export default NoteList;
