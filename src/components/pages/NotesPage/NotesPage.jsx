@@ -7,7 +7,7 @@ import NoteForm from '../../UI/form/NoteForm'
 import SearchBar from '../../UI/notes/SearchBar/SearchBar'
 
 import NoteService from '../../../API/NoteService'
-import { EditNoteContext, IsEditingContext } from '../../../context'
+import { ChangeNoteContext, EditNoteContext, IsEditingContext } from '../../../context'
 
 
 const NotesPage = () => {
@@ -69,13 +69,14 @@ const NotesPage = () => {
 				editNote,
 				setEditNote
 			}}>
-				<div className={styles['NotesSection']}>
-					<SearchBar 	notes={notes} change={changeNoteList} isChangeList={isChangeList} />
-					<NoteList 	notes={filteredNoteList} remove={removeNote} isInc={isChangeList} 
-						setEditNote={setEditNote} editState={[isEditing, setIsEditing]} />
-					<NoteForm 	create={createNote} editNote={editNote} setEditNote={setEditNote}
-						change={changeNote} isEditing={isEditing} />
-				</div>
+				<ChangeNoteContext.Provider value={changeNote}>
+					<div className={styles['NotesSection']}>
+						<SearchBar 	notes={notes} change={changeNoteList} isChangeList={isChangeList} />
+						<NoteList 	notes={filteredNoteList} remove={removeNote} isInc={isChangeList} />
+						<NoteForm 	create={createNote} editNote={editNote} setEditNote={setEditNote} isEditing={isEditing} />
+					</div>
+				</ChangeNoteContext.Provider>
+
 			</EditNoteContext.Provider>
 		</IsEditingContext.Provider>
 	);

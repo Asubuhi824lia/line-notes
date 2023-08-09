@@ -1,14 +1,16 @@
 import styles from './NoteForm.module.css'
 
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import NoteTextarea from '../textarea/NoteTextarea'
 import SendButton from '../button/SendButton'
 import EditHeader from './EditHeader/EditHeader'
+import { ChangeNoteContext } from '../../../context'
 
 
-const NoteForm = ({create, editNote, setEditNote, change, isEditing}) => {
+const NoteForm = ({create, editNote, setEditNote, isEditing}) => {
     
+    const change = useContext(ChangeNoteContext)
     const [note, setNote] = useState(null)
     
     useEffect(() => {
@@ -16,8 +18,7 @@ const NoteForm = ({create, editNote, setEditNote, change, isEditing}) => {
     }, [editNote])
 
 
-    const addNewNote = (e) => {
-        e.preventDefault()
+    const addNewNote = () => {
         const cur_date = new Date()
 
         let date = cur_date.getDate()
@@ -35,17 +36,10 @@ const NoteForm = ({create, editNote, setEditNote, change, isEditing}) => {
         setNote({ id: 0, date: '', text: '' })
     }
 
-    const isEmpty = (text) => {
-        return (text == '') ? true : (text.match(/[^\s]/g) ? false : true);
-    }
-
     const isEdited = (editedText, origText) => {
         return (editedText === origText) ? false : true;
     }
-
-
-    const editIfChanged = (e) => {
-		e.preventDefault()
+    const editIfChanged = () => {
         if (isEdited(editNote.text, note.text)) {
             change(editNote, note.text)
             return true;
@@ -76,8 +70,12 @@ const NoteForm = ({create, editNote, setEditNote, change, isEditing}) => {
                     text={note ? note.text: ''}
                     onChange={e => { setNote({ ...note, text: e.target.value }) }}/>
                 <SendButton 
-                    onClick={(e) => { isEditing ? editIfChanged(e) : addNewNote(e); setEditNote(null) }}
-                    isTextareaEmpty={ note ? isEmpty(note.text) : true } />
+                    onClick={(e) => { 
+                            e.preventDefault(); 
+                            isEditing ? editIfChanged() : addNewNote(); 
+                            setEditNote(null);
+                        }}
+                    note={note}/>
             </form>
         </div>
     );

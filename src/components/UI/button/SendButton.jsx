@@ -6,10 +6,16 @@ import { useContext } from 'react'
 import { IsEditingContext } from '../../../context'
 
 
-const SendButton = ({onClick, isTextareaEmpty}) => {
+const SendButton = ({onClick, note}) => {
 
     /* true - edit; false - send */
     const type = useContext(IsEditingContext)['isEditing']
+
+    const isEmpty = (text) => {
+        return (text == '') ? true : (text.match(/[^\s]/g) ? false : true);
+    }
+    const isTextareaEmpty = note ? isEmpty(note.text) : true;
+
 
     return (
         <button disabled={isTextareaEmpty} onClick={onClick} className={styles['send-button']}>
@@ -20,5 +26,6 @@ const SendButton = ({onClick, isTextareaEmpty}) => {
         </button>
     );
 }
+
 
 export default SendButton;
