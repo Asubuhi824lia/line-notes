@@ -1,20 +1,26 @@
 import styles from './NoteItem.module.css'
+
 import { useContext } from 'react';
 
 import edit from '../../../../icons/edit-icon.png'
 import del from '../../../../icons/delete-icon.png'
 
-import { EditNoteContext, IsEditingContext } from '../../../../context'
+import { EditNoteContext, IsEditingContext, EmitNoteIdContext } from '../../../../context'
 
 
 const NoteItem = ({note, remove}) => {
 
-    const setEditNote = useContext(EditNoteContext)['setEditNote']
+    const setEditNote   = useContext(EditNoteContext)['setEditNote']
+
+    const emitNoteId    = useContext(EmitNoteIdContext)['emitNoteId']
+    const isEmitNote    = (note.id == emitNoteId);
+
+    const emitted = `${styles.note} ${styles.emitted}`
 
     return (
         <IsEditingContext.Consumer>
             {({ isEditing, setIsEditing }) => (
-                <div className={styles.note}>
+                <div className={isEmitNote ? emitted : styles.note}>
                     <div className={styles.body}>
                         <strong><data>{note.date}</data></strong>
                         <p>{note.text}</p>

@@ -1,10 +1,11 @@
 import styles from './NotesList.module.css'
 
-import NoteItem from './NoteItem/NoteItem'
 import { useEffect } from 'react'
 
+import NoteItem from './NoteItem/NoteItem'
 
-const NoteList = ({notes, remove, isInc, emittedKey}) => {
+
+const NoteList = ({notes, remove, isInc}) => {
 
     useEffect(() => {
         const section = document.querySelector('#note_list')
