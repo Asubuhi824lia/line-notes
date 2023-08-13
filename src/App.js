@@ -1,26 +1,31 @@
 import styles from './App.module.css'
 
-import { React } from 'react'
+import { React, useState } from 'react'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 
 import Header from './components/common/Header/Header'
 
-import AuthPage 	from './components/pages/AuthPage/AuthPage'
-import AccountPage 	from './components/pages/AccountPage/AccountPage'
-import NotesPage 	from './components/pages/NotesPage/NotesPage'
+import { privateRoutes, publicRoutes } from './routes/index'
 
 
 const App = () => {
+	const [isAuth, setIsAuth] = useState(false)
+
 	return (
 		<div className={styles["wrapper"]}>
 			<main>
 				<BrowserRouter>
 					<Header />
 					<Routes>
-						<Route path='/auth' 	element={<AuthPage />} />
-						<Route path='/account' 	element={<AccountPage />} />
-						<Route path='/notes' 	element={<NotesPage />} />
-						<Route path='*'			element={<Navigate to='/notes' />} />
+						{isAuth
+							? publicRoutes.map((route) => {
+								return <Route path={route.path} element={route.element} exact={route.exact}/>
+							})
+							: privateRoutes.map((route) => {
+								return <Route path={route.path} element={route.element} exact={route.exact}/>
+							})
+						}
+						<Route path='*'	element={<Navigate to='/login'/>} />
 					</Routes>
 				</BrowserRouter>
 			</main>

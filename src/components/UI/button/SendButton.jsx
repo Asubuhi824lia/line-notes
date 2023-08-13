@@ -3,13 +3,13 @@ import styles from './SendButton.module.css'
 import send_icon from '../../../icons/send-icon.png'
 import edit_icon from '../../../icons/check-mark.png'
 import { useContext } from 'react'
-import { IsEditingContext } from '../../../context'
+import { EditNoteContext } from '../../../context'
 
 
 const SendButton = ({onClick, note}) => {
 
     /* true - edit; false - send */
-    const type = useContext(IsEditingContext)['isEditing']
+    const type = useContext(EditNoteContext)['isEditing']
 
     const isEmpty = (text) => {
         return (text == '') ? true : (text.match(/[^\s]/g) ? false : true);

@@ -7,7 +7,7 @@ import NoteForm from '../../UI/form/NoteForm'
 import SearchBar from '../../UI/notes/SearchBar/SearchBar'
 
 import NoteService from '../../../API/NoteService'
-import { ChangeNoteContext, EditNoteContext, IsEditingContext, EmitNoteIdContext } from '../../../context'
+import { ChangeNoteContext, EditNoteContext, EmitNoteIdContext } from '../../../context'
 
 
 const NotesPage = () => {
@@ -65,27 +65,23 @@ const NotesPage = () => {
 
 	return (
 		<EmitNoteIdContext.Provider value={{
-			emitNoteId: emitNoteId, 
+			emitNoteId, 
 			setEmitNoteId,
 		}}>
-			<IsEditingContext.Provider value={{
+			<EditNoteContext.Provider value={{
+				editNote,
+				setEditNote,
 				isEditing, 
 				setIsEditing,
 			}}>
-				<EditNoteContext.Provider value={{
-					editNote,
-					setEditNote,
-				}}>
-					<ChangeNoteContext.Provider value={changeNote}>
-						<div className={styles['NotesSection']}>
-							<SearchBar 	notes={notes} change={changeNoteList} isChangeList={isChangeList} />
-							<NoteList 	notes={filteredNoteList} remove={removeNote} isInc={isChangeList} />
-							<NoteForm 	create={createNote} editNote={editNote} setEditNote={setEditNote} isEditing={isEditing} />
-						</div>
-					</ChangeNoteContext.Provider>
-
-				</EditNoteContext.Provider>
-			</IsEditingContext.Provider>
+				<ChangeNoteContext.Provider value={changeNote}>
+					<div className={styles['NotesSection']}>
+						<SearchBar 	notes={notes} change={changeNoteList} isChangeList={isChangeList} />
+						<NoteList 	notes={filteredNoteList} remove={removeNote} isInc={isChangeList} />
+						<NoteForm 	create={createNote} />
+					</div>
+				</ChangeNoteContext.Provider>
+			</EditNoteContext.Provider>
 		</EmitNoteIdContext.Provider>
 	);
 }

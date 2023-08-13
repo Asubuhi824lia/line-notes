@@ -2,12 +2,12 @@ import styles from './EditHeader.module.css'
 
 import { useContext } from 'react';
 
-import { EditNoteContext, IsEditingContext, EmitNoteIdContext } from '../../../../context';
+import { EditNoteContext, EmitNoteIdContext } from '../../../../context';
 
 
 const EditHeader = () => {
 
-    const isEditing     = useContext(IsEditingContext)['isEditing']
+    const isEditing     = useContext(EditNoteContext)['isEditing']
     const editNote      = useContext(EditNoteContext)['editNote']
     const setEditNote   = useContext(EditNoteContext)['setEditNote']
 

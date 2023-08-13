@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import edit from '../../../../icons/edit-icon.png'
 import del from '../../../../icons/delete-icon.png'
 
-import { EditNoteContext, IsEditingContext, EmitNoteIdContext } from '../../../../context'
+import { EditNoteContext, EmitNoteIdContext } from '../../../../context'
 
 
 const NoteItem = ({note, remove}) => {
@@ -17,8 +17,9 @@ const NoteItem = ({note, remove}) => {
 
     const emitted = `${styles.note} ${styles.emitted}`
 
+
     return (
-        <IsEditingContext.Consumer>
+        <EditNoteContext.Consumer>
             {({ isEditing, setIsEditing }) => (
                 <div className={isEmitNote ? emitted : styles.note}>
                     <div className={styles.body}>
@@ -37,7 +38,7 @@ const NoteItem = ({note, remove}) => {
                     </div>
                 </div>
             )}
-        </IsEditingContext.Consumer>
+        </EditNoteContext.Consumer>
     );
 }
 

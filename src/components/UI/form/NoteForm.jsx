@@ -5,12 +5,15 @@ import { useContext, useEffect, useState } from 'react'
 import NoteTextarea from '../textarea/NoteTextarea'
 import SendButton from '../button/SendButton'
 import EditHeader from './EditHeader/EditHeader'
-import { ChangeNoteContext } from '../../../context'
+import { ChangeNoteContext, EditNoteContext } from '../../../context'
 
 
-const NoteForm = ({create, editNote, setEditNote, isEditing}) => {
+const NoteForm = ({create}) => {
     
     const change = useContext(ChangeNoteContext)
+    const editNote      = useContext(EditNoteContext)['editNote'],
+          setEditNote   = useContext(EditNoteContext)['setEditNote'],
+          isEditing     = useContext(EditNoteContext)['isEditing']
     const [note, setNote] = useState(null)
     
     useEffect(() => {
