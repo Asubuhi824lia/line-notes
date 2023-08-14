@@ -23,6 +23,7 @@ label {
     color: #626d7a;
 }
 
+
 a { text-decoration: none; }
 a:hover { text-decoration: underline; }
 
@@ -34,23 +35,30 @@ a:hover { text-decoration: underline; }
 .gate-link {
     display: block;
     margin: 15px 0;
+    color: blue;
 }
 
 
 .input {
-    color: black;
-
-    outline: none;
-    margin: 10px 0;
-
     border-radius: 8px;
-    border: none;
     background-color: transparent;
-    /* border: 1px solid rgba(0, 0, 0, 0.12); */
+    color: black;
+    
     height: 36px;
+    margin: 10px 0;
     padding: 8px 12px;
     line-height: 20px;
     
+}
+.input:focus { outline: none; }
+
+.info-input {
+    border: none;
+    outline: none;
+}
+
+.edit-input {
+    border: 1px solid rgba(0, 0, 0, 0.7);
 }
 
 .button {
