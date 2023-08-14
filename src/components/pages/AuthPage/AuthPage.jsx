@@ -3,21 +3,16 @@ import styles from './AuthPage.module.css'
 
 const AuthPage = () => {
 	return (
-		<section>
+		<section className={styles['auth-form']}>
 			<div className={styles['data-fields']}>
-				<label>Почта
-					<input />
-				</label>
-				<label>Логин
-					<input />
-				</label>
-				<label>Пароль
-					<input />
-				</label>
+				<input id="email" placeholder="Почта"/>
+				<input id="login" placeholder="Логин"/>
+				<input id="password" placeholder="Пароль"/>
+				<button>Зарегестрироваться</button>
 			</div>
-			<button>Зарегестрироваться</button>
 		</section>
 	);
 }
+
 
 export default AuthPage;

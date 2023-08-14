@@ -3,7 +3,7 @@ import styles from './NoteForm.module.css'
 import { useContext, useEffect, useState } from 'react'
 
 import NoteTextarea from '../textarea/NoteTextarea'
-import SendButton from '../button/SendButton'
+import SendButton from '../SendButton/SendButton'
 import EditHeader from './EditHeader/EditHeader'
 import { ChangeNoteContext, EditNoteContext } from '../../../context'
 

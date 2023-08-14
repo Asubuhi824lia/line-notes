@@ -6,15 +6,15 @@ const AccountPage = () => {
 		<section>
 			<div className={styles['data-fields']}>
 				<label>Почта
-					<input disabled />
+					<input disabled/>
 					<button>Изменить</button>
 				</label>
 				<label>Логин
-					<input disabled />
+					<input disabled/>
 					<button>Изменить</button>
 				</label>
 				<label>Пароль
-					<input disabled />
+					<input disabled/>
 					<button>Изменить</button>
 				</label>
 			</div>
@@ -22,5 +22,6 @@ const AccountPage = () => {
 		</section>
 	);
 }
+
 
 export default AccountPage;

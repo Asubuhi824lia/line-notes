@@ -15,7 +15,7 @@ const App = () => {
 		<div className={styles["wrapper"]}>
 			<main>
 				<BrowserRouter>
-					<Header />
+					{isAuth ? <Header /> : ''}
 					<Routes>
 						{isAuth
 							? publicRoutes.map((route) => {
@@ -25,7 +25,7 @@ const App = () => {
 								return <Route path={route.path} element={route.element} exact={route.exact}/>
 							})
 						}
-						<Route path='*'	element={<Navigate to='/login'/>} />
+						<Route path='*'	element={<Navigate to='/auth'/>} />
 					</Routes>
 				</BrowserRouter>
 			</main>
