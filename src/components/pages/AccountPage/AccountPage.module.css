@@ -1,5 +1,9 @@
 section {
-    padding: 0 10px;
+    margin: 15px 0;
+    padding: 0 15px;
+    background-color: white;
+    width: 100%;
+    font-size: 13px;
 }
 
 .data-fields {
@@ -7,11 +11,49 @@ section {
     flex-direction: column;
 }
 
-.data-fields>label {
-    padding: 10px 0;
+.data-fields>label { margin-top: 10px; }
+
+label {
+    display: grid;
+    grid-template-columns: 20% 50% 20%;
+    align-items: center;
+    grid-gap: 5%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    
+    color: #626d7a;
 }
 
-section>button {
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.auth-link {
+    text-align: end;
+    color: #2a5885;
+}
+
+.gate-link {
+    display: block;
+    margin: 15px 0;
+}
+
+
+.input {
+    color: black;
+
+    outline: none;
+    margin: 10px 0;
+
+    border-radius: 8px;
+    border: none;
+    background-color: transparent;
+    /* border: 1px solid rgba(0, 0, 0, 0.12); */
+    height: 36px;
+    padding: 8px 12px;
+    line-height: 20px;
+    
+}
+
+.button {
     width: fit-content;
     padding: 0px 30px;
     margin-top: 20px;

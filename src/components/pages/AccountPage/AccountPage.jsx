@@ -1,24 +1,34 @@
 import styles from './AccountPage.module.css'
 
 
+const user_data = {
+	email: 'cocoa_mokoa*66@gmail.com',
+	login: 'Cocoa_Micola',
+	passw: 'JiJaJiJaJa',
+}
+
+
 const AccountPage = () => {
 	return (
 		<section>
 			<div className={styles['data-fields']}>
-				<label>Почта
-					<input disabled/>
-					<button>Изменить</button>
+				<label>
+					<span>Почта</span>
+					<input disabled className={styles.input} value={user_data.email}/>
+					<a href='#' className={styles['auth-link']}>Изменить</a>
 				</label>
-				<label>Логин
-					<input disabled/>
-					<button>Изменить</button>
+				<label>
+					<span>Логин</span>
+					<input disabled className={styles.input} value={user_data.login}/>
+					<a href='#' className={styles['auth-link']}>Изменить</a>
 				</label>
-				<label>Пароль
-					<input disabled/>
-					<button>Изменить</button>
+				<label>
+					<span>Пароль</span>
+					<input disabled className={styles.input} value={user_data.passw}/>
+					<a href='#' className={styles['auth-link']}>Изменить</a>
 				</label>
 			</div>
-			<button>Выйти</button>
+			<a href='#' className={styles['gate-link']}>Выйти</a>
 		</section>
 	);
 }

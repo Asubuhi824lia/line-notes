@@ -9,12 +9,10 @@
 }
 
 .data-fields {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+    margin-top: 30px;
 }
 
-section input {
+.input {
     padding: 10px;
     outline: none;
     margin-top: 20px;
@@ -27,11 +25,11 @@ section input {
     line-height: 20px;
     
 }
-section input:focus {
+.input:focus {
     outline: 1px solid blue;
 }
 
-section button {
+.button {
     font-size: inherit;
     padding: 10px 0;
     margin-top: 20px;

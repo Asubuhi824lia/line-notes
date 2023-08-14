@@ -9,7 +9,7 @@ import { privateRoutes, publicRoutes } from './routes/index'
 
 
 const App = () => {
-	const [isAuth, setIsAuth] = useState(false)
+	const [isAuth, setIsAuth] = useState(!false)
 
 	return (
 		<div className={styles["wrapper"]}>
