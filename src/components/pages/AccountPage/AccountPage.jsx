@@ -2,25 +2,22 @@ import styles from './AccountPage.module.css'
 
 import { useContext, useState, useEffect } from 'react'
 
-import { AuthContext } from '../../../context'
-
-
-const user_data = {
-	email: 'cocoa_mokoa*66@gmail.com',
-	login: 'Cocoa_Micola',
-	password: 'JiJaJiJaJa',
-}
+import { AuthContext, UserContext } from '../../../context'
 
 
 const AccountPage = () => {
 
-	const [editData, setEditData] = useState('')
-
-	const [email, setEmail] 		= useState(user_data.email)
-	const [login, setLogin] 		= useState(user_data.login)
-	const [password, setPassword]	= useState(user_data.password)
+	const user_data = useContext(UserContext)
+	const user_id = localStorage.getItem("user_id")
+	const users = user_data[user_id]
 
 	const setIsAuth = useContext(AuthContext)['setIsAuth']
+
+	const [editData, setEditData] = useState('')
+
+	const [email, setEmail] 		= useState(users.email)
+	const [login, setLogin] 		= useState(users.login)
+	const [password, setPassword]	= useState(users.password)
 
 
 	useEffect(() => {
@@ -33,19 +30,19 @@ const AccountPage = () => {
 	}, [editData])
 
 
-	const changeUserData = (field, newData) => { user_data[`${field}`] = newData; }
+	const changeUserData = (field, newData) => { users[`${field}`] = newData; }
 	const resetChanges = () => { 
-		setEmail(user_data.email)
-		setLogin(user_data.login)
-		setPassword(user_data.password)
+		setEmail(users.email)
+		setLogin(users.login)
+		setPassword(users.password)
 		setEditData("")
 	}
 
 	const editField = (type) => { 
 		switch (type) {
-			case "email": user_data[`${type}`] = email; break;
-			case "login": user_data[`${type}`] = login; break;
-			case "password": user_data[`${type}`] = password; break;
+			case "email": users[`${type}`] = email; break;
+			case "login": users[`${type}`] = login; break;
+			case "password": users[`${type}`] = password; break;
 		}
 		setEditData(""); 
 	}
