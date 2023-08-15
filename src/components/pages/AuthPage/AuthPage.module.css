@@ -37,6 +37,7 @@
     border: none;
     border-radius: 8px;
 }
+.button:hover { cursor: pointer; opacity: .9; }
 
 .gate-link {
     display: block;

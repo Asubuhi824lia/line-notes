@@ -27,7 +27,7 @@
     outline: 1px solid blue;
 }
 
-.button {
+.button {    
     font-size: 14px;
     padding: 10px 0;
     margin-top: 20px;
@@ -37,6 +37,7 @@
     border: none;
     border-radius: 8px;
 }
+.button:hover { cursor: pointer; opacity: .9; }
 
 .gate-link {
     display: block;
