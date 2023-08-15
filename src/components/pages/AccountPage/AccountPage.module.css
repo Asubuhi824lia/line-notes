@@ -16,15 +16,16 @@ section {
 label {
     display: grid;
     grid-template-columns: 20% 50% 20%;
-    align-items: center;
     grid-gap: 5%;
+
+    margin: 10px 0;
+    padding: 8px 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-    
     color: #626d7a;
 }
 
 
-a { text-decoration: none; }
+a, .text { text-decoration: none; padding: 8px 0; }
 a:hover { text-decoration: underline; }
 
 .auth-link {
@@ -45,7 +46,6 @@ a:hover { text-decoration: underline; }
     color: black;
     
     height: 36px;
-    margin: 10px 0;
     padding: 8px 12px;
     line-height: 20px;
     
@@ -65,4 +65,19 @@ a:hover { text-decoration: underline; }
     width: fit-content;
     padding: 0px 30px;
     margin-top: 20px;
+}
+
+.edit-btn {
+    font-size: inherit;
+    padding: 8px 16px;
+    margin: 10px 0;
+    
+    background-color: #447bba;
+    color: #FFF;
+    border: none;
+    border-radius: 8px;
+}
+.edit-btn:hover {
+    opacity: .8;
+    cursor: pointer;
 }
