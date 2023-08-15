@@ -10,7 +10,7 @@ import { AuthContext } from './context'
 
 
 const App = () => {
-	const [isAuth, setIsAuth] = useState(!false)
+	const [isAuth, setIsAuth] = useState(false)
 
 	return (
 		<AuthContext.Provider value={{ 
@@ -30,7 +30,7 @@ const App = () => {
 									return <Route path={route.path} element={route.element} exact={route.exact}/>
 								})
 							}
-							<Route path='*'	element={<Navigate to='/auth'/>} />
+							<Route path='*'	element={<Navigate to={!isAuth ? '/auth' : '/notes'}/>} />
 						</Routes>
 					</BrowserRouter>
 				</main>
