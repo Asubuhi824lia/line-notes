@@ -1,6 +1,8 @@
-import { useState } from 'react'
 import styles from './AccountPage.module.css'
-import { useEffect } from 'react'
+
+import { useContext, useState, useEffect } from 'react'
+
+import { AuthContext } from '../../../context'
 
 
 const user_data = {
@@ -14,9 +16,12 @@ const AccountPage = () => {
 
 	const [editData, setEditData] = useState('')
 
-	const [email, setEmail] = useState(user_data.email)
-	const [login, setLogin] = useState(user_data.login)
-	const [password, setPassword] = useState(user_data.password)
+	const [email, setEmail] 		= useState(user_data.email)
+	const [login, setLogin] 		= useState(user_data.login)
+	const [password, setPassword]	= useState(user_data.password)
+
+	const setIsAuth = useContext(AuthContext)['setIsAuth']
+
 
 	useEffect(() => {
 		switch (editData) {
@@ -61,8 +66,8 @@ const AccountPage = () => {
 						? <button className={`${styles['edit-btn']} ${styles.text}`} onClick={() => editField("email")}>Изменить почту</button> : ''}
 					</div>
 					{isFocus("email")
-						? <a href='#' className={styles['auth-link']} onClick={resetChanges}>Отмена</a>
-						: <a href='#' className={styles['auth-link']} onClick={() => {resetChanges(); setEditData("email")}}>Изменить</a>
+						? <a className={styles['auth-link']} onClick={resetChanges}>Отмена</a>
+						: <a className={styles['auth-link']} onClick={() => {resetChanges(); setEditData("email")}}>Изменить</a>
 					}
 				</label>
 				<label>
@@ -74,8 +79,8 @@ const AccountPage = () => {
 						? <button className={`${styles['edit-btn']} ${styles.text}`} onClick={() => editField("login")}>Изменить логин</button> : ''}
 					</div>
 					{isFocus("login")
-						? <a href='#' className={styles['auth-link']} onClick={resetChanges}>Отмена</a>
-						: <a href='#' className={styles['auth-link']} onClick={() => {resetChanges(); setEditData("login")}}>Изменить</a>
+						? <a className={styles['auth-link']} onClick={resetChanges}>Отмена</a>
+						: <a className={styles['auth-link']} onClick={() => {resetChanges(); setEditData("login")}}>Изменить</a>
 					}
 				</label>
 				<label>
@@ -87,12 +92,12 @@ const AccountPage = () => {
 						? <button className={`${styles['edit-btn']} ${styles['text']}`} onClick={() => editField("password")}>Изменить пароль</button> : ''}
 					</div>
 					{isFocus("password")
-						? <a href='#' className={styles['auth-link']} onClick={resetChanges}>Отмена</a>
-						: <a href='#' className={styles['auth-link']} onClick={() => {resetChanges(); setEditData("password")}}>Изменить</a>
+						? <a className={styles['auth-link']} onClick={resetChanges}>Отмена</a>
+						: <a className={styles['auth-link']} onClick={() => {resetChanges(); setEditData("password")}}>Изменить</a>
 					}
 				</label>
 			</div>
-			<a href='#' className={styles['gate-link']}>Выйти</a>
+			<a className={styles['gate-link']} onClick={() => setIsAuth(false)}>Выйти</a>
 		</section>
 	);
 }
