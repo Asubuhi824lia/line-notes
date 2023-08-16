@@ -3,21 +3,22 @@ import styles from './AccountPage.module.css'
 import { useContext, useState, useEffect } from 'react'
 
 import { AuthContext, UserContext } from '../../../context'
+import Field from './Field/Field'
 
 
 const AccountPage = () => {
 
 	const user_data = useContext(UserContext)
 	const user_id = localStorage.getItem("user_id")
-	const users = user_data[user_id]
+	const user = user_data[user_id]
 
 	const setIsAuth = useContext(AuthContext)['setIsAuth']
 
 	const [editData, setEditData] = useState('')
 
-	const [email, setEmail] 		= useState(users.email)
-	const [login, setLogin] 		= useState(users.login)
-	const [password, setPassword]	= useState(users.password)
+	const [email, setEmail] 		= useState(user.email)
+	const [login, setLogin] 		= useState(user.login)
+	const [password, setPassword]	= useState(user.password)
 
 
 	useEffect(() => {
@@ -30,25 +31,23 @@ const AccountPage = () => {
 	}, [editData])
 
 
-	const changeUserData = (field, newData) => { users[`${field}`] = newData; }
 	const resetChanges = () => { 
-		setEmail(users.email)
-		setLogin(users.login)
-		setPassword(users.password)
+		setEmail(user.email)
+		setLogin(user.login)
+		setPassword(user.password)
 		setEditData("")
 	}
 
 	const editField = (type) => { 
 		switch (type) {
-			case "email": users[`${type}`] = email; break;
-			case "login": users[`${type}`] = login; break;
-			case "password": users[`${type}`] = password; break;
+			case "email": user[`${type}`] = email; break;
+			case "login": user[`${type}`] = login; break;
+			case "password": user[`${type}`] = password; break;
 		}
-		setEditData(""); 
+		setEditData("");
 	}
 
 	const isFocus = (type) => (editData == type)
-	const getInputClass = (type) => (editData == type) ? styles['edit-input'] : styles['info-input']
 	
 
 	return (
@@ -56,12 +55,7 @@ const AccountPage = () => {
 			<div className={styles['data-fields']}>
 				<label>
 					<span className={styles.text}>Почта</span>
-					<div>
-						<input 	disabled={!isFocus("email")} id='email' value={email} onChange={(e) => setEmail(e.target.value)}
-								className={`${styles.input} ${getInputClass("email")}`}/>
-						{isFocus("email") 
-						? <button className={`${styles['edit-btn']} ${styles.text}`} onClick={() => editField("email")}>Изменить почту</button> : ''}
-					</div>
+					<Field type = "email" state={[email, setEmail]} editField={editField} editData={editData} />
 					{isFocus("email")
 						? <a className={styles['auth-link']} onClick={resetChanges}>Отмена</a>
 						: <a className={styles['auth-link']} onClick={() => {resetChanges(); setEditData("email")}}>Изменить</a>
@@ -69,12 +63,7 @@ const AccountPage = () => {
 				</label>
 				<label>
 					<span className={styles.text}>Логин</span>
-					<div>
-						<input 	disabled={!isFocus("login")} id='login' value={login} onChange={(e) => setLogin(e.target.value)}
-								className={`${styles.input} ${getInputClass("login")}`}/>
-						{isFocus("login") 
-						? <button className={`${styles['edit-btn']} ${styles.text}`} onClick={() => editField("login")}>Изменить логин</button> : ''}
-					</div>
+					<Field type = "login" state={[login, setLogin]} editField={editField} editData={editData} />
 					{isFocus("login")
 						? <a className={styles['auth-link']} onClick={resetChanges}>Отмена</a>
 						: <a className={styles['auth-link']} onClick={() => {resetChanges(); setEditData("login")}}>Изменить</a>
@@ -82,12 +71,7 @@ const AccountPage = () => {
 				</label>
 				<label>
 					<span className={styles.text}>Пароль</span>
-					<div>
-						<input 	disabled={!isFocus("password")} id='password' value={password} onChange={(e) => setPassword(e.target.value)}
-								className={`${styles.input} ${getInputClass("password")}`}/>
-						{isFocus("password") 
-						? <button className={`${styles['edit-btn']} ${styles['text']}`} onClick={() => editField("password")}>Изменить пароль</button> : ''}
-					</div>
+					<Field type = "password" state={[password, setPassword]} editField={editField} editData={editData} />
 					{isFocus("password")
 						? <a className={styles['auth-link']} onClick={resetChanges}>Отмена</a>
 						: <a className={styles['auth-link']} onClick={() => {resetChanges(); setEditData("password")}}>Изменить</a>

@@ -1,0 +1,34 @@
+.input {
+    border-radius: 8px;
+    background-color: transparent;
+    color: black;
+    
+    height: 36px;
+    padding: 8px 12px;
+    line-height: 20px;
+}
+.input:focus { outline: none; }
+
+.info-input {
+    border: none;
+    outline: none;
+}
+
+.edit-input {
+    border: 1px solid rgba(0, 0, 0, 0.7);
+}
+
+.edit-btn {
+    font-size: inherit;
+    padding: 8px 16px;
+    margin: 10px 0;
+    
+    background-color: #447bba;
+    color: #FFF;
+    border: none;
+    border-radius: 8px;
+}
+.edit-btn:hover {
+    opacity: .8;
+    cursor: pointer;
+}

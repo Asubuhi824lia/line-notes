@@ -1,9 +1,11 @@
 import styles from './LoginPage.module.css'
 
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { NavLink } from 'react-router-dom';
 import { AuthContext, UserContext } from '../../../context';
+
+import equal from 'deep-equal'
 
 
 const LoginPage = () => {
@@ -18,10 +20,10 @@ const LoginPage = () => {
 
 
     const checkUser = () => {
-		const user = JSON.stringify( formUserData() )
-
-        users.forEach((u, id) => {
-            if (JSON.stringify(u) == user) {
+		const log_user = formUserData()
+        
+        users.forEach((user, id) => {
+            if ( equal(user, log_user) ) {
                 setUser(id);
                 logIn();
                 return;
@@ -30,7 +32,7 @@ const LoginPage = () => {
     }
 
     const formUserData = () => ({email: email, login: login, password: password})
-	const setUser 	= (id) => localStorage.setItem("user_id", id);
+	const setUser   = (id) => localStorage.setItem("user_id", id);
 	const logIn		= () => setIsAuth(true);
 
 
