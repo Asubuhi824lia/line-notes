@@ -7,17 +7,8 @@
     --notes-section__margin-y: 15px;
 }
 
-/* .NotesSection {
-    margin: var(--notes-section__margin-y) 0;
-} */
-
 .notes-list {
     border: 1px solid #dce1e6;
     padding: 0 15px;
     background-color: white;
-}
-
-.item {
-    padding: 15px 25px;
-    border-bottom: 1px solid #dce1e6;
 }

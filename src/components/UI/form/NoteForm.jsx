@@ -8,13 +8,14 @@ import EditHeader from './EditHeader/EditHeader'
 import { ChangeNoteContext, EditNoteContext } from '../../../context'
 
 
-const NoteForm = ({create}) => {
+const NoteForm = ({create, setFormHeight}) => {
     
     const change = useContext(ChangeNoteContext)
     const editNote      = useContext(EditNoteContext)['editNote'],
           setEditNote   = useContext(EditNoteContext)['setEditNote'],
           isEditing     = useContext(EditNoteContext)['isEditing']
     const [note, setNote] = useState(null)
+    
     
     useEffect(() => {
         setNote(editNote)
@@ -54,15 +55,11 @@ const NoteForm = ({create}) => {
 
 	useEffect(() => {
 		if(!isEditing) {
-			changeFormHeight('115px');
+			setFormHeight(115)
 		} else {
-			changeFormHeight('150px')
+			setFormHeight(150)
 		}
 	}, [isEditing])
-
-	const changeFormHeight = (height = '115px') => {
-		document.documentElement.style.setProperty('--note-form__height', height)
-	}
 
 
     return (
