@@ -8,13 +8,13 @@ import del from '../../../../icons/delete-icon.png'
 import { EditNoteContext, EmitNoteIdContext } from '../../../../context'
 
 
-const NoteItem = ({note, remove}) => {
-
+const NoteItem = ({note = {id: '', date: '', text: ''}, remove}) => {
+    
     const setEditNote   = useContext(EditNoteContext)['setEditNote']
-
+    
     const emitNoteId    = useContext(EmitNoteIdContext)['emitNoteId']
     const isEmitNote    = (note.id == emitNoteId);
-
+    
     const emitted = `${styles.note} ${styles.emitted}`
 
 
