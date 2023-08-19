@@ -1,9 +1,9 @@
-.auth-form {
+.auth-section {
     padding: 32px 24px;
-    width: 70%;
+    width: 75%;
 }
 
-.auth-form>div {
+.auth-form {
     display: flex;
     align-content: space-between;
     align-items: stretch;
@@ -49,8 +49,8 @@
 
 
 @media (max-width: 820px) {
-    .auth-form { width: 80%; }
+    .auth-section { width: 80%; }
 }
 @media (max-width: 420px) {
-    .auth-form { width: 100%; }
+    .auth-section { width: 95%; }
 }

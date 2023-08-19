@@ -10,7 +10,7 @@ import { AuthContext } from './context'
 
 
 const App = () => {
-	const [isAuth, setIsAuth] = useState(!false)
+	const [isAuth, setIsAuth] = useState(false)
 
 	return (
 		<AuthContext.Provider value={{ 
