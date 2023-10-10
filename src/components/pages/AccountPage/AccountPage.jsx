@@ -1,6 +1,6 @@
 import styles from './AccountPage.module.css'
 
-import { useContext, useState, useEffect } from 'react'
+import { useContext, useState } from 'react'
 
 import { AuthContext, UserContext } from '../../../context'
 import Field from './Field/Field'
@@ -9,26 +9,15 @@ import Field from './Field/Field'
 const AccountPage = () => {
 
 	const user_data = useContext(UserContext)
-	const user_id = localStorage.getItem("user_id")
-	const user = user_data[user_id]
-
+	// const user_id = localStorage.getItem("user_id")
+	const user = user_data[0]
+	
 	const setIsAuth = useContext(AuthContext)['setIsAuth']
-
 	const [editData, setEditData] = useState('')
-
+	
 	const [email, setEmail] 		= useState(user.email)
 	const [login, setLogin] 		= useState(user.login)
 	const [password, setPassword]	= useState(user.password)
-
-
-	useEffect(() => {
-		switch (editData) {
-			case "email": document.getElementById('email').focus(); break;
-			case "login": document.getElementById('login').focus(); break;
-			case "password": document.getElementById('password').focus(); break;
-			default: break;
-		}
-	}, [editData])
 
 
 	const resetChanges = () => { 
@@ -74,7 +63,7 @@ const AccountPage = () => {
 					<Field type = "password" state={[password, setPassword]} editField={editField} editData={editData} />
 					{isFocus("password")
 						? <a className={styles['auth-link']} onClick={resetChanges}>Отмена</a>
-						: <a className={styles['auth-link']} onClick={() => {resetChanges(); setEditData("password")}}>Изменить</a>
+						: <a className={styles['auth-link']} onClick={() => {resetChanges(); setEditData("password");}}>Изменить</a>
 					}
 				</label>
 			</div>

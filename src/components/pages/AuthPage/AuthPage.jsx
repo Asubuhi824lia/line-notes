@@ -85,8 +85,7 @@ const AuthPage = () => {
 
 				<button 
 					className={styles['button']}
-					// onClick={() => {regUser(); setUser(); logIn()}}
-					// onClick={() => {}}
+					onClick={() => {regUser(); setUser(); logIn()}}
 				>Зарегестрироваться</button>
 			</form>
 			<NavLink to="/login" className={styles['gate-link']}>Войти</NavLink>

@@ -14,7 +14,7 @@ const Field = ({type = '', state, editField, editData}) => {
             <input 	disabled={!isFocus(type)} id={type} value={field} onChange={(e) => setField(e.target.value)}
                     className={`${styles.input} ${getInputClass(type)}`}/>
             {isFocus(type)
-            ? <button className={`${styles['edit-btn']} ${styles['text']}`} onClick={() => editField(type)}>Изменить пароль</button> : ''}
+            ? <button className={`${styles['edit-btn']} ${styles['text']}`} onClick={() => editField(type)}>Изменить {type}</button> : ''}
         </div>
     )
 }

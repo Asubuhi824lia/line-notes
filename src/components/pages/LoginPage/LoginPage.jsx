@@ -10,12 +10,12 @@ import equal from 'deep-equal'
 
 const LoginPage = () => {
 
-    const [email, setEmail] 		= useState()
-	const [login, setLogin] 		= useState()
-	const [password, setPassword]	= useState()
-
-
 	const users = useContext(UserContext)
+
+    const [email, setEmail] 		= useState(users[0].email)
+	const [login, setLogin] 		= useState(users[0].login)
+	const [password, setPassword]	= useState(users[0].password)
+
 	const setIsAuth = useContext(AuthContext)['setIsAuth']
 
 
